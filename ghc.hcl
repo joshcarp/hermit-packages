@@ -3,9 +3,9 @@ binaries = ["bin/*"]
 
 on unpack {
   run { cmd = "/bin/chmod" args = ["-R", "+w", "."] dir = "${root}" }
-  run { cmd = "./configure" args = ["--prefix=${root}"] dir = "${root}/ghc-${version}" }
-  run { cmd = "make" args = ["install"] dir = "${root}/ghc-${version}" }
-  run { cmd = "rm" args = ["-rf", "${root}/ghc-${version}"] }
+  run { cmd = ".$(pwd)/configure" args = ["--prefix=${root}"] dir = "${root}/ghc-${version}" }
+  run { cmd = "/bin/make" args = ["install"] dir = "${root}/ghc-${version}" }
+  run { cmd = "/bin/rm" args = ["-rf", "${root}/ghc-${version}"] }
   run { cmd = "/bin/chmod" args = ["-R", "-w", "."] dir = "${root}" }
 }
 
